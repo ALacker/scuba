@@ -4,16 +4,35 @@
   <script src="scuba.js"></script>
 
   <style>
+    h2 {
+      border-bottom: 1px solid black;
+      padding: 10px;
+      margin: 0;
+    }
     .is-hidden {
-       display: none;
+      display: none;
+    }
+    .dive-section {
+      background-color: aquamarine;
+      margin-bottom: 20px;
+      border: 1px solid black;
+    }
+    .dive-section p {
+      padding: 10px;
+    }
+    .calculated-information {
+      font-weight: bold;
+      font-size: 2em;
+      
+      padding: 5px;
+      margin: 5px;
     }
   </style>
 </head>
 <body>
-<div class="js-dive-one">
-  <p>
-    First Dive:
-  </p>
+<h1>Dive Pressure Group Calculator</h1>
+<div class="js-dive-one dive-section">
+  <h2>First Dive:</h2>
   <p>
     <label for="meters-input">Meters:</label>
     <input id="meters-input" name="meters-input" type="text" class="js-meters"></input>
@@ -22,16 +41,17 @@
     <input id="minutes-input" name="minutes-input" type="text" class="js-minutes"></input>
   </p>
   <p>
-    Pressure Group following first dive: <div class="output"></div>
+    Pressure Group following first dive: <span class="js-output calculated-information"></span>
   </p>
 </div>
-<div class="js-dive-two is-hidden">
+<div class="js-dive-two is-hidden dive-section">
+  <h2>Second Dive:</h2>
   <p>
     <label for="surface-interval-input">How much was the surface interval? (in minutes):</label>
     <input id="surface-interval-input" name="surface-interval-input" type="text" class="js-surface-interval"></input>
   </p>
   <p>
-    Pressure Group following surface interval: <div class="js-dive-two-output"></div>
+    Pressure Group following surface interval: <span class="js-dive-two-output calculated-information"></span>
   </p>
 </div>
 </body>
