@@ -3,7 +3,11 @@ $(function() {
 
     var $meters = $('.meters'),
         $minutes = $('.minutes'),
-        $output = $('.output');
+        $output = $('.output'),
+        $surfaceInterval = $('.surface-interval'),
+        $diveTwo = $('.dive-two'),
+        $diveTwoOutput = $('.dive-two-output'),
+        pressureGroup = '';
 
     // give the index of the minute value as a number
     // return this as a letter that represents the dive index
@@ -58,22 +62,69 @@ $(function() {
         }
     }
 
+    function getSecondPressureGroup(surfaceInterval) {
+
+        var minuteIndex = 0,
+            minuteArray = [],
+            // This probably isn't the best way to format this, TODO: think about it
+            // The dive lookup is a dictionary, each array is the amount of minutes it takes to get to the pressure group in that alphabet slot
+            // ie, diveLookup['C'] has the pressure groups for initial pressure group of 'C'.
+            // If you stay on the surface for 60 minutes, that is between diveLookup['C'][1] and diveLookup['C'][2],
+            // so use the equivalent of '2' in presure group terms... which is 'B'
+            diveLookup = {
+                'A': [3],
+                'B': [228, 47],
+                'C': [250, 70, 22]
+                // Add rest of chart here
+            };
+
+        minuteArray = diveLookup[pressureGroup];
+
+        if (minuteArray) {
+            if (surfaceInterval > minuteArray[0]) {
+                return 'you have waited long enough to be out of a pressure group';
+            }
+
+            for (minuteIndex; minuteIndex < minuteArray.length; minuteIndex++) {
+                if (surfaceInterval >= minuteArray[minuteIndex]) {
+                    return getPressureGroupByNumber(minuteIndex - 1);
+                }
+            }
+
+            return pressureGroup;
+        }
+
+        return 'error, we could not find your pressure group';
+    }
+
     // check the inputs for meters and minutes,
     // and update the output div with the value of the pressure group
     function calculate() {
         var meterVal = parseInt($meters.val(), 10),
-            minuteVal = parseInt($minutes.val(), 10),
-            pressureGroup = '';
+            minuteVal = parseInt($minutes.val(), 10);
 
         if (meterVal && minuteVal) {
             pressureGroup = getPressureGroup(meterVal, minuteVal);
-
+            $diveTwo.removeClass('is-hidden');
+        }
+        else {
+            $diveTwo.addClass('is-hidden');
         }
 
         $output.html(pressureGroup);
+        
+    }
+
+    function calculateDiveTwo() {
+        var surfaceInterval = parseInt($surfaceInterval.val(), 10);
+        if (typeof(surfaceInterval) === 'number') {
+            $diveTwoOutput.html(getSecondPressureGroup(surfaceInterval));
+            $diveTwo.removeClass('is-hidden');
+        }
     }
 
     $('.meters').on('keyup', calculate);
     $('.minutes').on('keyup', calculate);
+    $('.surface-interval').on('keyup', calculateDiveTwo);
 
 });

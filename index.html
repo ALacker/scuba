@@ -2,25 +2,33 @@
 <head>
   <script src="jquery-2.1.1.min.js"></script>
   <script src="scuba.js"></script>
+
+  <style>
+    .is-hidden {
+       display: none;
+    }
+  </style>
 </head>
 <body>
-<p>
-	First Dive:
-</p>
-
-
-<p>
-  Meters: <input type="text" class="meters"></input>
-  Minutes: <input type="text" class="minutes"></input>
-</p>
-
-<p>
-  Pressure Group following first dive: <div class="output"></div>
-</p>
-
-<p>
-  Second Dive:
-</p>
-
+<div class="dive-one">
+  <p>
+    First Dive:
+  </p>
+  <p>
+    Meters: <input type="text" class="meters"></input>
+    Minutes: <input type="text" class="minutes"></input>
+  </p>
+  <p>
+    Pressure Group following first dive: <div class="output"></div>
+  </p>
+</div>
+<div class="dive-two is-hidden">
+  <p>
+    How much was the surface interval? (in minutes): <input type="text" class="surface-interval"></input>
+  </p>
+  <p>
+    Pressure Group following surface interval: <div class="dive-two-output"></div>
+  </p>
+</div>
 </body>
 </html>
