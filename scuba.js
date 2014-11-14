@@ -1,12 +1,12 @@
 $(function() {
     'use strict';
 
-    var $meters = $('.meters'),
-        $minutes = $('.minutes'),
-        $output = $('.output'),
-        $surfaceInterval = $('.surface-interval'),
-        $diveTwo = $('.dive-two'),
-        $diveTwoOutput = $('.dive-two-output'),
+    var $meters = $('.js-meters'),
+        $minutes = $('.js-minutes'),
+        $output = $('.js-output'),
+        $surfaceInterval = $('.js-surface-interval'),
+        $diveTwo = $('.js-dive-two'),
+        $diveTwoOutput = $('.js-dive-two-output'),
         pressureGroup = '';
 
     // give the index of the minute value as a number
@@ -145,8 +145,8 @@ $(function() {
         }
     }
 
-    $('.meters').on('keyup', calculate);
-    $('.minutes').on('keyup', calculate);
-    $('.surface-interval').on('keyup', calculateDiveTwo);
+    $meters.on('keyup', calculate);
+    $minutes.on('keyup', calculate);
+    $surfaceInterval.on('keyup', calculateDiveTwo);
 
 });
