@@ -19,7 +19,7 @@ $(function() {
         var minuteArray,
             minuteIndex = 0,
             // update maxMeters as we fill out the diveLookup table
-            maxMeters = 16,
+            maxMeters = 42,
             // diveLookup is formatted with a key of meters, and an array of minutes
             diveLookup = {
                 '10': [10, 20, 26, 30, 34, 37, 41, 45, 50, 54, 59, 64, 70, 75, 82, 88, 95, 104, 112, 122, 133, 145, 160, 178, 199, 219],
@@ -32,8 +32,9 @@ $(function() {
                 '25': [4, 8, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26, 28, 29],
                 '30': [3, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20],
                 '35': [3, 5, 7, 8, 8, 9, 10, 11, 12, 13, 14],
-                '40': [3, 5,6, 6, 7, 8, 9],
+                '40': [3, 5, 6, 6, 7, 8, 9],
                 '42': [3, 4, 4, 6, 7, 8]
+
             };
 
         if (meters > maxMeters) {
