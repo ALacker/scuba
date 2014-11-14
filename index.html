@@ -15,8 +15,11 @@
     First Dive:
   </p>
   <p>
-    Meters: <input type="text" class="js-meters"></input>
-    Minutes: <input type="text" class="js-minutes"></input>
+    <label for="meters-input">Meters:</label>
+    <input id="meters-input" name="meters-input" type="text" class="js-meters"></input>
+
+    <label for="minutes-input">Minutes:</label>
+    <input id="minutes-input" name="minutes-input" type="text" class="js-minutes"></input>
   </p>
   <p>
     Pressure Group following first dive: <div class="output"></div>
@@ -24,7 +27,8 @@
 </div>
 <div class="js-dive-two is-hidden">
   <p>
-    How much was the surface interval? (in minutes): <input type="text" class="js-surface-interval"></input>
+    <label for="surface-interval-input">How much was the surface interval? (in minutes):</label>
+    <input id="surface-interval-input" name="surface-interval-input" type="text" class="js-surface-interval"></input>
   </p>
   <p>
     Pressure Group following surface interval: <div class="js-dive-two-output"></div>
